@@ -1,7 +1,7 @@
 /* основний колір тексту #757575*/
 /*  другорядний колір тексту #212121*/
 
-/* основний колір фону  #FFFFFF*/
+/* основний колір фону  #E5E5E5;*/
 /* другорядний колір фону #F5F4FA */
 /* футер основний колір фону #2F303A */
 /* футер основний колір тексту #FFFFFF */
@@ -12,6 +12,7 @@
 /* Web  #2196F3 */
 /* stydio  #000000*/
 :root {
+  --primary-background: #e5e5e5;
   --primary-text-color: #757575;
   --secondary-text-color: #212121;
   --primary-white: #ffffff;
@@ -308,7 +309,9 @@ img {
   border-radius: 0px 0px 4px 4px;
   background-color: var(--primary-white);
 }
-.bg-color:hover {
+
+.bg-color:hover,
+.bg-color:focus {
   box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 1px 3px rgba(0, 0, 0, 0.12);
 }
@@ -360,7 +363,8 @@ img {
   margin-right: 10px;
 }
 
-.team-link:hover {
+.team-link:hover,
+.team-link:focus {
   --color4: #ffffff;
   border-radius: 50%;
   background-color: var(--color-changes);
@@ -388,7 +392,8 @@ img {
   cursor: pointer;
   fill: currentColor;
 }
-.client-logo:hover {
+.client-logo:hover,
+.client-logo:focus {
   border-color: var(--color-changes);
   --color4: var(--color-changes);
 }
@@ -463,7 +468,8 @@ img {
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
 }
-.social-link:hover {
+.social-link:hover,
+.social-link:focus {
   border-radius: 50%;
   background-color: var(--color-changes);
 }
@@ -576,8 +582,42 @@ img {
 }
 .button-changes:hover,
 .button-changes:focus {
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 3px 1px rgba(0, 0, 0, 0.1);
   background-color: var(--color-changes);
   color: var(--primary-white);
+}
+/*-- PROJECT-- */
+
+.pictures-place {
+  margin: -15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.project-item {
+  background-color: var(--primary-white);
+
+  /* border: 1px solid #eeeeee;
+  box-sizing: border-box; */
+
+  cursor: pointer;
+  margin: 15px;
+}
+.project-item:hover,
+.project-item:focus {
+  box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    0px 1px 1px rgba(0, 0, 0, 0.12);
+}
+.project-text {
+  padding-top: 20px;
+  padding-bottom: 19px;
+  padding-left: 23px;
+  padding-right: 23px;
+  border-left: 1px solid#EEEEEE;
+  border-bottom: 1px solid#EEEEEE;
+  border-right: 1px solid#EEEEEE;
+
+  /* #eeeeee */
 }
 .port-title {
   text-align: left;
@@ -602,35 +642,8 @@ img {
   /* identical to box height, or 187% */
   letter-spacing: 0.03em;
 }
-/*-- PROJECT-- */
-.pictures-place {
-  margin: -15px;
-  display: flex;
-  flex-wrap: wrap;
-}
-.project-item {
-  cursor: pointer;
-  margin: 15px;
-}
-.project-item:hover {
-  box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    0px 1px 1px rgba(0, 0, 0, 0.12);
-}
-.project-text {
-  padding-top: 20px;
-  padding-bottom: 19px;
-  padding-left: 23px;
-  padding-right: 23px;
-  border-left: 1px solid#EEEEEE;
-  border-bottom: 1px solid#EEEEEE;
-  border-right: 1px solid#EEEEEE;
-
-  /* #eeeeee */
-}
 .changes-text {
-  display: none;
   width: 322px;
-
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 18px;
