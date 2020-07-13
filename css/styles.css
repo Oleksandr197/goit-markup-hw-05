@@ -3,6 +3,7 @@
 
 /* основний колір фону  #E5E5E5;*/
 /* другорядний колір фону #F5F4FA */
+/* kolip постоянні кліенти #AFB1B8 */
 /* футер основний колір фону #2F303A */
 /* футер основний колір тексту #FFFFFF */
 /* футер другорядний колір тексту rgba(255, 255, 255, 0.6) */
@@ -11,13 +12,17 @@
 /* змінний колір #2196F3 */
 /* Web  #2196F3 */
 /* stydio  #000000*/
+/* швидкість змінення властивості cubic-bezier(0.4, 0, 0.2, 1).  */
+/* колір фону оверлей  rgba(33, 150, 243, 0.9) */
 :root {
   --primary-background: #e5e5e5;
   --primary-text-color: #757575;
   --secondary-text-color: #212121;
   --primary-white: #ffffff;
+  --color-gray: #afb1b8;
   --color-changes: #2196f3;
   --footer-color: #2f303a;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .visually-hidden {
   position: absolute;
@@ -107,6 +112,9 @@ img {
 }
 
 .site-nav .link {
+  position: relative;
+  padding-top: 32px;
+  padding-bottom: 32px;
   display: block;
   color: var(--secondary-text-color);
   font-family: "Roboto", sans-serif;
@@ -114,6 +122,7 @@ img {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+  transition: color 250ms var(--timing-function);
 }
 
 .site-nav .item:not(:last-child) {
@@ -128,6 +137,17 @@ img {
 
 .site-nav .link.current {
   color: var(--color-changes);
+}
+.current::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  left: 0;
+  bottom: 0;
+  border-radius: 2px;
+  background-color: var(--color-changes);
+  transition: background-color 250ms var(--timing-function);
 }
 
 /* tel, mail */
@@ -147,11 +167,14 @@ img {
   align-items: center;
   cursor: pointer;
   color: var(--primary-text-color);
+  fill: var(--primary-text-color);
+  transition: color 250ms var(--timing-function),
+    fill 250ms var(--timing-function);
 }
 
 .address-link:hover,
 .address-link:focus {
-  --color3: #2196f3;
+  fill: var(--color-changes);
   color: var(--color-changes);
 }
 .address-links .item:not(:last-child) {
@@ -166,6 +189,7 @@ img {
 
 .section-hero {
   height: 600px;
+  width: 1600px;
   display: flex;
   background-image: linear-gradient(
       rgba(47, 48, 58, 0.8),
@@ -277,10 +301,19 @@ img {
   margin-right: 30px;
 }
 .work-item {
+  position: relative;
   display: block;
 }
 
 .title {
+  position: absolute;
+  width: 100%;
+  height: 70px;
+  left: 0px;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 14px;
@@ -288,6 +321,10 @@ img {
   text-align: center;
   letter-spacing: 0.03em;
   color: var(--primary-white);
+  background-image: linear-gradient(
+    rgba(47, 48, 58, 0.8),
+    rgba(47, 48, 58, 0.8)
+  );
 }
 
 /* our team */
@@ -308,13 +345,10 @@ img {
   cursor: pointer;
   border-radius: 0px 0px 4px 4px;
   background-color: var(--primary-white);
-}
-
-.bg-color:hover,
-.bg-color:focus {
   box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 1px 3px rgba(0, 0, 0, 0.12);
 }
+
 .team-info {
   padding-top: 30px;
   padding-bottom: 24px;
@@ -355,6 +389,11 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 50%;
+  fill: var(--color-gray);
+  background-color: var(--primary-white);
+  transition: background-color 250ms var(--timing-function),
+    color 250ms var(--timing-function);
 }
 .logotype {
   cursor: pointer;
@@ -365,7 +404,7 @@ img {
 
 .team-link:hover,
 .team-link:focus {
-  --color4: #ffffff;
+  fill: var(--primary-white);
   border-radius: 50%;
   background-color: var(--color-changes);
 }
@@ -385,17 +424,21 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #afb1b8;
+  border: 1px solid var(--color-gray);
   border-radius: 4px;
+  fill: var(--color-gray);
+  transition: border 250ms var(--timing-function),
+    fill 250ms var(--timing-function);
 }
 .icon {
   cursor: pointer;
-  fill: currentColor;
 }
 .client-logo:hover,
 .client-logo:focus {
+  /* transition: color 250ms var(--timing-function); */
+
   border-color: var(--color-changes);
-  --color4: var(--color-changes);
+  fill: var(--color-changes);
 }
 
 /* --FOOTER-- */
@@ -439,6 +482,7 @@ img {
 }
 .footer-link {
   color: rgba(255, 255, 255, 0.6);
+  transition: color 250ms var(--timing-function);
 }
 /* Color section */
 .footer-link:hover,
@@ -454,7 +498,6 @@ img {
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
-  --color4: #ffffff;
 }
 .social-links .item:not(:last-child) {
   margin-right: 10px;
@@ -465,8 +508,10 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  fill: var(--primary-white);
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 250ms var(--timing-function);
 }
 .social-link:hover,
 .social-link:focus {
@@ -549,7 +594,7 @@ img {
   color: var(--primary-white);
 }
 
-/* -- Project --  */
+/* -- Portfolio --  */
 .project {
   padding-top: 93px;
   padding-bottom: 94px;
@@ -576,7 +621,10 @@ img {
   border: 0px;
   border-radius: 4px;
   cursor: pointer;
+  transition: color 250ms var(--timing-function);
+  transition: background-color 250ms var(--timing-function);
 }
+
 .button-filters .item:not(:last-child) {
   margin-right: 8px;
 }
@@ -603,10 +651,14 @@ img {
   cursor: pointer;
   margin: 15px;
 }
-.project-item:hover,
-.project-item:focus {
+.shadow:hover,
+.shadow:focus,
+.pictures-place .project-item:hover .changes-text,
+.pictures-place .shadow:focus .changes-text {
   box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06),
     0px 1px 1px rgba(0, 0, 0, 0.12);
+  opacity: 1;
+  transform: translateY(0%);
 }
 .project-text {
   padding-top: 20px;
@@ -642,13 +694,25 @@ img {
   /* identical to box height, or 187% */
   letter-spacing: 0.03em;
 }
+.card-changes {
+  position: relative;
+  overflow: hidden;
+}
 .changes-text {
-  width: 322px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 370px;
+  padding: 63px 24px;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.56;
   /* or 156% */
   letter-spacing: 0.03em;
-  color: #000000;
+  color: var(--primary-white);
+  background-color: rgba(33, 150, 243, 0.9);
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 250ms var(--timing-function);
 }
